@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt64jjs3517kk"]
+
+[ext_resource type="PackedScene" uid="uid://brtmufr8s5yik" path="res://Assets/GLB format/display-bread.glb" id="1_sktaj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sktaj"]
+size = Vector3(0.75, 0.5, 0.5)
+
+[node name="display-bread2" instance=ExtResource("1_sktaj")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="display-bread" index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="display-bread/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24118319, -0.042448282)
+shape = SubResource("BoxShape3D_sktaj")

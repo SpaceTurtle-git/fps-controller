@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctx8dplgaju7"]
+
+[ext_resource type="PackedScene" uid="uid://b26et5fp3rb8j" path="res://Assets/GLB format/cash-register.glb" id="1_sukyi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sukyi"]
+size = Vector3(0.4, 0.3, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_igo0r"]
+size = Vector3(0.4, 0.5, 0.4)
+
+[node name="cash-register2" instance=ExtResource("1_sukyi")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="cash-register" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cash-register/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20125008, 0.15059662, 0)
+shape = SubResource("BoxShape3D_sukyi")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="cash-register/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20451164, 0.25811005, 0.2025938)
+shape = SubResource("BoxShape3D_igo0r")

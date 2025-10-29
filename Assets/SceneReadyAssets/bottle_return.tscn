@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bemh33elnr5bj"]
+
+[ext_resource type="PackedScene" uid="uid://clsw3nbjmem5a" path="res://Assets/GLB format/bottle-return.glb" id="1_w3gtv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7b1ju"]
+size = Vector3(0.4, 0.6, 0.4)
+
+[node name="bottle-return2" instance=ExtResource("1_w3gtv")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="bottle-return" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bottle-return/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_7b1ju")
