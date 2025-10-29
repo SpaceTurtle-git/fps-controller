@@ -1,14 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://dso8ycpf48qpu"]
+[gd_scene load_steps=10 format=3 uid="uid://dso8ycpf48qpu"]
 
 [ext_resource type="PackedScene" uid="uid://bo5fptssjkrr1" path="res://Scenes/player.tscn" id="1_a02cp"]
-[ext_resource type="PackedScene" uid="uid://by3cbov5ma730" path="res://Scenes/module.tscn" id="2_go701"]
+[ext_resource type="ArrayMesh" uid="uid://3js7oyivbu3n" path="res://kitchen.obj" id="2_go701"]
 
-[sub_resource type="Sky" id="Sky_k7acu"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
+sky_top_color = Color(0.89689344, 0.64762133, 0.6833294, 1)
+sky_horizon_color = Color(0.88235295, 0.2509804, 0.05490196, 1)
+sky_curve = 0.12
+
+[sub_resource type="Sky" id="Sky_go701"]
+sky_material = SubResource("ProceduralSkyMaterial_a02cp")
 
 [sub_resource type="Environment" id="Environment_5a7ea"]
-sky = SubResource("Sky_k7acu")
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
+background_mode = 2
+sky = SubResource("Sky_go701")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a02cp"]
+albedo_color = Color(1, 0.90000004, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go701"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a7ea"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j60k"]
+albedo_color = Color(0, 0, 1, 1)
 
 [node name="World" type="Node3D"]
 
@@ -20,6 +37,53 @@ transform = Transform3D(-0.8660254, -0.07476768, 0.49437824, 0, 0.98875636, 0.14
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -3.8958945, 0.3732736, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3732736, 0)
 
-[node name="Module" parent="." instance=ExtResource("2_go701")]
+[node name="shitmap" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="shitmap"]
+use_collision = true
+size = Vector3(50, 0.1, 50)
+material = SubResource("StandardMaterial3D_a02cp")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="shitmap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.999, 2, 0.019)
+use_collision = true
+size = Vector3(1, 4, 50)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="shitmap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 2, 0.019)
+use_collision = true
+size = Vector3(1, 4, 50)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="shitmap"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2, -25)
+use_collision = true
+size = Vector3(1, 4, 50)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="shitmap"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2, 25)
+use_collision = true
+size = Vector3(1, 4, 50)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="shitmap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9174962, 0.94177437, -11.727067)
+use_collision = true
+size = Vector3(3.935791, 1.9501953, 3.5361328)
+material = SubResource("StandardMaterial3D_go701")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="shitmap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0669537, 1.7318134, -11.727067)
+use_collision = true
+size = Vector3(3.935791, 3.5302734, 3.5361328)
+material = SubResource("StandardMaterial3D_5a7ea")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="shitmap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.288284, 2.3117085, -11.727067)
+use_collision = true
+size = Vector3(3.935791, 4.6900635, 3.5361328)
+material = SubResource("StandardMaterial3D_8j60k")
+
+[node name="Kitchen" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -23.556, 0, 30.24)
+mesh = ExtResource("2_go701")

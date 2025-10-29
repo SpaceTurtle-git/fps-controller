@@ -7,14 +7,14 @@ var mc_ub =  80  #mouse clamp upperbound
 var friction = 7
 var air_control = 1.5
 
-const WALK_SPEED = 2.5
-const SPRINT_SPEED = 5
-const JUMP_VELOCITY = 3
+const WALK_SPEED = 5.0
+const SPRINT_SPEED = 10.0
+const JUMP_VELOCITY = 6
 const SENSITIVITY = 0.005
 
 #head bobbing 
-const BOB_FREQUENCY = 1.0
-const BOB_AMPLITUDE = 0.05
+const BOB_FREQUENCY = 2.0
+const BOB_AMPLITUDE = 0.08
 var bob_time = 0.0
 
 #fov 
@@ -30,9 +30,8 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	#mouse look around logic
 	if event is InputEventMouseMotion:
-		#we use different nodes for different axis of rotations because rotating one node on both axes fks it
-		head.rotate_y(-event.relative.x * SENSITIVITY)  #head rotated up and down
-		camera.rotate_x(-event.relative.y * SENSITIVITY) #camera rotated left and right
+		head.rotate_y(-event.relative.x * SENSITIVITY)
+		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		#clamp veiw boundries
 		camera.rotation.x = clamp(camera.rotation.x,deg_to_rad(mc_lb),deg_to_rad(mc_ub))
 
